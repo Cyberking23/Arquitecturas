@@ -20,6 +20,15 @@ public class HerramientaService {
     public Optional<Herramienta> buscarPorId(Long id){
         return herramientaRepository.findById(id);
     }
+    public Optional<Herramienta> actualizar(Long id, Herramienta herramientaActualizada) {
+        return herramientaRepository.findById(id).map(h -> {
+            h.setNombre(herramientaActualizada.getNombre());
+            h.setTipo(herramientaActualizada.getTipo());
+            h.setMarca(herramientaActualizada.getMarca());
+            return herramientaRepository.save(h);
+        });
+    }
+
     public Herramienta guardar(Herramienta herramienta) {
         return herramientaRepository.save(herramienta);
     }

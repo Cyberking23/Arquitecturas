@@ -27,6 +27,13 @@ public class HerramientaController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Herramienta> actualizar(@PathVariable Long id, @RequestBody Herramienta herramientaActualizada) {
+        return herramientaService.actualizar(id, herramientaActualizada)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 
     @PostMapping
     public Herramienta guardar(@RequestBody Herramienta herramienta) {
